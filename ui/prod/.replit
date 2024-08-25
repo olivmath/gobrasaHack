@@ -1,0 +1,12 @@
+modules = ["nodejs-20", "web"]
+run = "npx thirdweb create --template marketplace-v3"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "npx thirdweb create --template marketplace-v3"]
+
+[[ports]]
+localPort = 3000
+externalPort = 80
