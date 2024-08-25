@@ -1,1 +1,7 @@
-# Fullstack Web3 Template
+# GO BRASA HACK
+
+## HOW TO WORKS
+
+## HOW TO INSTALL
+
+## HOW TO RUN
