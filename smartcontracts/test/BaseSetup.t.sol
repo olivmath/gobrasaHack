@@ -35,6 +35,18 @@ contract BaseSetup is Utils {
         vm.startPrank(controller);
         counter = new Counter();
         vm.stopPrank();
+
+        // 1. mint tokens
+        // createDCC(ipfs_link, symbol, description, amount)
+
+        // 2. distruting yield to holders
+        // payHolders()
+
+        // 3. recue of tokens in expiration time
+        // rescueTokens()
+
+        // 4. burn tokens
+        // burnHolders()
     }
 
     function test_basesetup_just_for_pass_in_converage() public {}
