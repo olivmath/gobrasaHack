@@ -6,7 +6,7 @@ import {DCCToken} from "./DCCToken.sol";
 contract BTGIssuer {
     address public owner;
 
-    event DCCCreated(address tokenAddress);
+    event DCCCreated(address indexed tokenAddress);
 
     modifier onlyOwner() {
         require(msg.sender == owner, "Not the contract owner");
