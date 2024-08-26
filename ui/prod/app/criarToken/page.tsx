@@ -32,11 +32,11 @@ export default function CreateToken() {
       const formattedSupply = ethers.parseUnits(TokenAmount, 18);
       const transaction = await contract.createDCC(
         TokenName,
-        pdfFile ? await deployIPFS(pdfFile) : "",
         TokenSymbol,
         TokenDescription,
-        interestRate,
-        formattedSupply
+        pdfFile ? await deployIPFS(pdfFile) : "",
+        formattedSupply,
+        interestRate
       );
 
       await transaction.wait();

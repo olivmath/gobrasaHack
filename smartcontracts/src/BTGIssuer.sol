@@ -29,9 +29,9 @@ contract BTGIssuer {
         DCCToken newDCC = new DCCToken(
             name,
             symbol,
-            amount,
             description,
             ipfsCID,
+            amount,
             interestRate
         );
 

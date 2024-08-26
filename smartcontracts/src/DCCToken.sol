@@ -18,9 +18,9 @@ contract DCCToken is ERC20 {
     constructor(
         string memory name_,
         string memory symbol_,
-        uint256 totalSupply_,
         string memory description_,
         string memory ipfsCID_,
+        uint256 totalSupply_,
         uint256 interestRate_
     ) {
         _name = name_;
