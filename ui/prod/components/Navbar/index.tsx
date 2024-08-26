@@ -1,8 +1,8 @@
 import { ConnectButton } from "thirdweb/react";
+import { NETWORK } from "@/services/contracts";
+import client from "@/lib/client";
 import Image from "next/image";
 import Link from "next/link";
-import client from "@/lib/client";
-import { NETWORK } from "@/services/contracts";
 
 export function Navbar() {
   return (
@@ -19,12 +19,17 @@ export function Navbar() {
             />
           </Link>
 
-
           <div className="flex items-center gap-6 font-medium">
-            <Link href="/comprar" className="transition hover:text-white/100">
+            <Link href="/create-token" className="transition hover:text-white/100">
+              Tokenizar DCC
+            </Link>
+            <Link href="/dasboard" className="transition hover:text-white/100">
+              Dashboard
+            </Link>
+            <Link href="/buy" className="transition hover:text-white/100">
               Comprar
             </Link>
-            <Link href="/vender" className="transition hover:text-white/100">
+            <Link href="/sell" className="transition hover:text-white/100">
               Vender
             </Link>
           </div>

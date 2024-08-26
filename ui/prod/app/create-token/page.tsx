@@ -60,7 +60,7 @@ export default function CreateToken() {
       const signer = await provider.getSigner();
       if (pdfFile) {
         await createToken(signer) ;
-        router.push("/verTokens")
+        router.push("/dasboard")
       } else {
         alert("Por favor, faça o upload de um arquivo PDF.");
       }
