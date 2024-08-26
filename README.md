@@ -41,6 +41,37 @@ Bloky ensures compliance with all relevant regulations, including rigorous KYC p
 
 By leveraging the Polygon blockchain, Bloky provides a highly secure environment with low transaction fees.
 
-## HOW TO INSTALL
-
 ## HOW TO RUN
+
+You need start 3 terminals
+
+### 1. Run blockchain
+
+You need install [forge](https://book.getfoundry.sh/getting-started/installation) and run Anvil:
+
+```
+anvil
+```
+
+### 2. Deploy Smartcontracts
+
+You need run a script to deploy the smartcontract:
+
+```
+cd smartcontract/
+./deploy-on-local.sh
+```
+
+### 3. Install and Configure Metamask
+
+First: install metamask [here](https://support.metamask.io/getting-started/getting-started-with-metamask/#how-to-install-metamask)
+Second: configure network [here](https://support.metamask.io/networks-and-sidechains/managing-networks/how-to-add-a-custom-network-rpc/)
+
+### 4. Run frontend
+
+You need to install deps before run frontend in:
+
+```
+cd ui/prod/
+npm install # yarn or pnpm i
+```

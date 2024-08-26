@@ -26,7 +26,8 @@ export default function CreateToken() {
     //   alert("Erro ao fazer upload do PDF!");
     // }
 
-    alert("PDF upload with success!")
+    alert("PDF upload to IPFS with success!")
+    return "QmXwE2u9z9p9689yD78p9455d18486674d9d46a382"; // Simulando hash do IPFS
   };
 
   const createToken = async (signer: ethers.JsonRpcSigner) => {
@@ -43,8 +44,8 @@ export default function CreateToken() {
         TokenSymbol,
         TokenDescription,
         pdfFile ? await deployIPFS(pdfFile) : "",
-        formattedSupply,
-        interestRate
+        interestRate,
+        formattedSupply
       );
 
       await transaction.wait();

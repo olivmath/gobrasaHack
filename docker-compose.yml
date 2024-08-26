@@ -1,9 +1,18 @@
 services:
-  frontend:
+  # frontend-prod:
+  #   depends_on:
+  #     - anvil
+  #   build:
+  #     context: ./ui/debug
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 3001:3000
+
+  frontend-debug:
     depends_on:
       - anvil
     build:
-      context: ./ui
+      context: ./ui/debug
       dockerfile: Dockerfile
     ports:
       - 3000:3000
