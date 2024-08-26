@@ -12,13 +12,9 @@ export default function Buy() {
 
 			<div className="my-8">
 				<Suspense fallback={<NFTGridLoading />}>
-					<ListingGrid
-						marketplace={MARKETPLACE}
-						collection={NFT_COLLECTION}
-						emptyText={
-							"Não há DCCs listados ainda"
-						}
-					/>
+				<div className="my-8">
+					Essa página ainda não está disponível!
+				</div>
 				</Suspense>
 			</div>
 		</div>

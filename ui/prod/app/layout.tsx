@@ -1,14 +1,15 @@
 import { ThirdwebProvider } from "thirdweb/react";
 import { Toaster } from "react-hot-toast";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import Image from "next/image";
 import "@/globals.css";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "thirdweb Marketplace Template",
+  title: "",
   description:
-		"Create an NFT marketplace on top of your NFT collection on any EVM-compatible blockchain.",
+		"",
 };
 
 export default function RootLayout({
@@ -38,6 +39,7 @@ export default function RootLayout({
               {children}
             </div>
           </div>
+          <Footer />
         </ThirdwebProvider>
       </body>
     </html>

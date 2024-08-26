@@ -9,7 +9,6 @@ import Image from "next/image";
 const Home: NextPage = () => {
   return (
     <div className="">
-      <div className="flex justify-center text-lg font-medium items-center mt-12 gap-4"></div>
       <div className="px-8 mx-auto text-center">
         <h1 className="mb-5 text-white font-bold text-6xl">
           <span className="text-transparent bg-clip-text gradient">BLOKY</span>
@@ -31,7 +30,6 @@ const Home: NextPage = () => {
             Tokenize sua DCC
           </Link>
         </div>
-        <div className="flex justify-center text-lg font-medium items-center mt-12 gap-4"></div>
       </div>
     </div>
   );
