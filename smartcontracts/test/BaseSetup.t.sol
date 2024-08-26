@@ -1,43 +1,33 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
 
-import {Counter} from "../src/Counter.sol";
+import {BTGIssuer} from "../src/BTGIssuer.sol";
 import {Utils} from "./Utils.t.sol";
 
 contract BaseSetup is Utils {
-    Counter counter;
+    BTGIssuer btgIssuer;
 
     address[] _users;
-    address controller;
+    address btg;
     address alice;
     address bob;
-    address eve;
-    address trent;
     address zero;
 
     function setUp() public virtual {
-        _users = createUsers(5);
+        _users = createUsers(3);
 
-        controller = _users[0];
+        btg = _users[0];
         alice = _users[1];
         bob = _users[2];
-        eve = _users[3];
-        trent = _users[4];
         zero = address(0x0);
 
-        vm.label(controller, "CONTROLLER");
+        vm.label(btg, "BTG");
         vm.label(alice, "ALICE");
         vm.label(bob, "BOB");
-        vm.label(eve, "EVE");
-        vm.label(trent, "TRENT");
         vm.label(zero, "ZERO");
 
-        vm.startPrank(controller);
-        counter = new Counter();
-        vm.stopPrank();
-
-        // 1. mint tokens
-        // createDCC(ipfs_link, symbol, description, amount)
+        vm.startPrank(btg);
+        btgIssuer = new BTGIssuer();
 
         // 2. distruting yield to holders
         // payHolders()

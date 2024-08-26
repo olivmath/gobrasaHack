@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { NFT } from "thirdweb";
-import { NFT_COLLECTION } from "../../const/contracts";
+import { NFT_COLLECTION } from "../../services/contracts";
 import { DirectListing, EnglishAuction } from "thirdweb/extensions/marketplace";
 import { MediaRenderer } from "thirdweb/react";
 import { getNFT } from "thirdweb/extensions/erc721";

@@ -7,7 +7,7 @@ import { NFT as NFTType } from "thirdweb";
 import { tokensOfOwner } from "thirdweb/extensions/erc721";
 import SaleInfo from "@/components/SaleInfo";
 import client from "@/lib/client";
-import { NFT_COLLECTION } from "@/const/contracts";
+import { NFT_COLLECTION } from "@/services/contracts";
 import toast from "react-hot-toast";
 import toastStyle from "@/util/toastConfig";
 import { Cross1Icon } from "@radix-ui/react-icons";
@@ -28,7 +28,7 @@ export default function Sell() {
 				.then(setOwnedTokenIds)
 				.catch((err) => {
 					toast.error(
-						"Something went wrong while fetching your NFTs!",
+						"Algo deu errado ao importar seus DCCs!",
 						{
 							position: "bottom-center",
 							style: toastStyle,
@@ -44,7 +44,7 @@ export default function Sell() {
 
 	return (
 		<div>
-			<h1 className="text-4xl">Sell NFTs</h1>
+			<h1 className="text-4xl">Vender NFTs</h1>
 			<div className="my-8">
 				{!selectedNft ? (
 					<>
@@ -60,8 +60,8 @@ export default function Sell() {
 								}}
 								emptyText={
 									!account
-										? "Connect your wallet to list your NFTs!"
-										: "Looks like you don't own any NFTs in this collection. Head to the buy page to buy some!"
+										? "Conecte sua carteiras!"
+										: "Você ainda não possuí DCCs, compre alguns!"
 								}
 							/>
 						)}

@@ -14,23 +14,21 @@ const Home: NextPage = () => {
         <h1 className="mb-5 text-white font-bold text-6xl">
           <span className="text-transparent bg-clip-text gradient">BLOKY</span>
           <br />
-          Get DCCs in an easy way
+          Crie tokens de DCCs com um clique
         </h1>
         <p className="text-white/60 text-lg max-w-xl mx-auto">
           <Link className="hover:underline" href="/" target="_blank">
             Bloky
           </Link>{" "}
-          is a new way of acquiring DCCs and making of them part of your
-          investiments.
+          é uma solução moderna para tokenizar DCCs.
         </p>
 
         <div className="flex justify-center text-lg font-medium items-center mt-12 gap-4">
           <Link
             className="w-56 p-3 rounded-lg bg-white/[.04] transition-all hover:bg-white/[.06] border-white/10 border"
-            href="/"
-            target="_blank"
+            href="/criarToken"
           >
-            Discover
+            Tokenize sua DCC
           </Link>
         </div>
         <div className="flex justify-center text-lg font-medium items-center mt-12 gap-4"></div>

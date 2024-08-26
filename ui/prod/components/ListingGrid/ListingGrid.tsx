@@ -4,7 +4,7 @@ import {
 } from "thirdweb/extensions/marketplace";
 import { NFT as NFTType, ThirdwebContract } from "thirdweb";
 import React, { Suspense } from "react";
-import { MARKETPLACE, NFT_COLLECTION } from "../../const/contracts";
+import { MARKETPLACE, NFT_COLLECTION } from "../../services/contracts";
 import NFTGrid, { NFTGridLoading } from "../NFT/NFTGrid";
 
 type Props = {

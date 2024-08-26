@@ -23,7 +23,8 @@ class Contract:
 CHAIN_ID = 31337
 CONTRACT_SCRIPT_NAME = "deploy.local.s.sol"
 TRANSACTIONS_PATH = f"broadcast/{CONTRACT_SCRIPT_NAME}/{CHAIN_ID}/run-latest.json"
-TARGET_DIR = "../ui/debug/generated/deployedContracts.ts"
+DEBUG_DIR = "../ui/debug/generated/deployedContracts.ts"
+PROD_DIR = "../ui/prod/const/deployedContracts.ts"
 
 
 
@@ -59,5 +60,8 @@ for contract in contracts:
 typescript_content = f"const deployedContracts = {dumps(json_config)} as const; \n\n export default deployedContracts"
 
 
-with open(TARGET_DIR, "w") as ts_file:
+with open(DEBUG_DIR, "w") as ts_file:
+    ts_file.write(typescript_content)
+
+with open(PROD_DIR, "w") as ts_file:
     ts_file.write(typescript_content)
