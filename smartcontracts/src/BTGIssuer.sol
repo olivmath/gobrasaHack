@@ -22,7 +22,7 @@ contract BTGIssuer {
         string memory name,
         string memory symbol,
         string memory description,
-        string memory ipfsLink,
+        string memory ipfsCID,
         uint256 interestRate,
         uint256 amount
     ) external onlyOwner returns (address) {
@@ -31,7 +31,7 @@ contract BTGIssuer {
             symbol,
             amount,
             description,
-            ipfsLink,
+            ipfsCID,
             interestRate
         );
 

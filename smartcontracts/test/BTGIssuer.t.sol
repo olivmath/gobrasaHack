@@ -11,12 +11,12 @@ contract BTGIssuerTest is BaseSetup {
     uint256 interestRate17percent;
     string symbol;
     string descriptionOfDCC;
-    string dccIpfsLink;
+    string dccipfsCID;
 
     function setUp() public override {
         BaseSetup.setUp();
         descriptionOfDCC = "Dividas de cartoes de credito de bons pagadores";
-        dccIpfsLink = "http://contract-of-dcc.docs";
+        dccipfsCID = "http://contract-of-dcc.docs";
         interestRate17percent = 17;
         oneMilion = 1_000_000;
         name = "Nova divida";
@@ -26,7 +26,7 @@ contract BTGIssuerTest is BaseSetup {
     function test_create_new_token() public {
         address dccAddress = btgIssuer.createDCC(
             name,
-            dccIpfsLink,
+            dccipfsCID,
             symbol,
             descriptionOfDCC,
             interestRate17percent,

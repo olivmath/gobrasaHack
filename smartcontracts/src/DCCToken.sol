@@ -7,9 +7,10 @@ contract DCCToken is ERC20 {
     string private _name;
     string private _symbol;
     string public description;
-    string public ipfsLink;
+    string public ipfsCID;
     uint256 private _totalSupply;
     uint256 public interestRate;
+    address owner;
 
     mapping(address => bool) private _holders;
     address[] private _allHolders;
@@ -19,18 +20,19 @@ contract DCCToken is ERC20 {
         string memory symbol_,
         uint256 totalSupply_,
         string memory description_,
-        string memory ipfsLink_,
+        string memory ipfsCID_,
         uint256 interestRate_
     ) {
         _name = name_;
         _symbol = symbol_;
         description = description_;
-        ipfsLink = ipfsLink_;
+        ipfsCID = ipfsCID_;
         interestRate = interestRate_;
+        owner = msg.sender;
 
-        _mint(msg.sender, totalSupply_);
+        _mint(owner, totalSupply_);
         _totalSupply = totalSupply_;
-        _addHolder(msg.sender);
+        _addHolder(owner);
     }
 
     function name() public view override returns (string memory) {
@@ -70,5 +72,10 @@ contract DCCToken is ERC20 {
     function calculateInterest(address holder) public view returns (uint256) {
         uint256 balance = balanceOf(holder);
         return (balance * interestRate) / 100;
+    }
+
+    function issuerOwnershipPercentage() public view returns (uint256) {
+        uint256 issuerBalance = balanceOf(owner);
+        return (issuerBalance * 100) / _totalSupply;
     }
 }
