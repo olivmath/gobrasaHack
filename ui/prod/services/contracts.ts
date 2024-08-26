@@ -30,10 +30,11 @@ export const NFT_COLLECTION = getContract({
 // For example, below, we use Mumbai.polygonscan to view transactions on the Mumbai testnet.
 export const ETHERSCAN_URL = "https://sepolia.etherscan.io";
 
-// src/const/contracts.ts
-export const CONTRACT_ABI =
-  deployedContracts["31337"][0].contracts.BTGIssuer.abi;
+export const BTGIssuer = {
+  abi: deployedContracts["31337"][0].contracts.BTGIssuer.abi,
+  address: deployedContracts["31337"][0].contracts.BTGIssuer.address,
+};
 
-// Example random contract address for testing purposes
-export const CONTRACT_ADDRESS =
-  deployedContracts["31337"][0].contracts.BTGIssuer.address;
+export const DCCToken = {
+  abi: deployedContracts["31337"][0].contracts.DCCToken.abi,
+};
