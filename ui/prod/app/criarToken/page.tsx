@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { ethers } from "ethers";
 import { BTGIssuer } from "@/services/contracts";
+import { useRouter } from 'next/navigation';
+
 
 export default function CreateToken() {
   const [TokenName, setTokenName] = useState("Nome Padrão do Ativo");
@@ -11,6 +13,8 @@ export default function CreateToken() {
   const [TokenAmount, setTokenAmount] = useState("1000");
   const [interestRate, setInterestRate] = useState("5");
   const [pdfFile, setPdfFile] = useState<File | null>(null);
+  const router = useRouter();
+
 
   const deployIPFS = async (file: File) => {
     alert("PDF deployed on IPFS");
@@ -55,7 +59,8 @@ export default function CreateToken() {
 
       const signer = await provider.getSigner();
       if (pdfFile) {
-        await createToken(signer);
+        await createToken(signer) ;
+        router.push("/verTokens")
       } else {
         alert("Por favor, faça o upload de um arquivo PDF.");
       }
