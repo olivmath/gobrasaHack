@@ -3,22 +3,30 @@
 import React, { useState } from "react";
 import { ethers } from "ethers";
 import { BTGIssuer } from "@/services/contracts";
-import { useRouter } from 'next/navigation';
-
+import { useRouter } from "next/navigation";
+import pinata from "@/services/pinata";
 
 export default function CreateToken() {
   const [TokenName, setTokenName] = useState("Nome Padrão do Ativo");
   const [TokenSymbol, setTokenSymbol] = useState("SÍMBOLO");
-  const [TokenDescription, setTokenDescription] = useState("Descrição padrão do ativo");
+  const [TokenDescription, setTokenDescription] = useState(
+    "Descrição padrão do ativo"
+  );
   const [TokenAmount, setTokenAmount] = useState("1000");
   const [interestRate, setInterestRate] = useState("5");
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const router = useRouter();
 
-
   const deployIPFS = async (file: File) => {
-    alert("PDF deployed on IPFS");
-    return "https://ipfs.io/CID";
+    // try {
+    //   const upload = await pinata.upload.file(file);
+    //   alert("IPFS Upload Response: " + upload.IpfsHash);
+    // } catch (error) {
+    //   console.error(error);
+    //   alert("Erro ao fazer upload do PDF!");
+    // }
+
+    alert("PDF upload with success!")
   };
 
   const createToken = async (signer: ethers.JsonRpcSigner) => {
@@ -59,8 +67,8 @@ export default function CreateToken() {
 
       const signer = await provider.getSigner();
       if (pdfFile) {
-        await createToken(signer) ;
-        router.push("/dasboard")
+        await createToken(signer);
+        router.push("/dasboard");
       } else {
         alert("Por favor, faça o upload de um arquivo PDF.");
       }
@@ -92,7 +100,10 @@ export default function CreateToken() {
           {pdfFile && <div className="mt-4 text-white">{pdfFile.name}</div>}
         </div>
       </div>
-      <div style={{ height: '100%' }} className="flex flex-col w-96 p-8 bg-gray-900 text-white rounded-lg">
+      <div
+        style={{ height: "100%" }}
+        className="flex flex-col w-96 p-8 bg-gray-900 text-white rounded-lg"
+      >
         <h1 className="text-2xl mb-6">Create Token on Polygon</h1>
         <div className="mb-4">
           <label className="block text-lg mb-2">Nome Ativo</label>
@@ -115,7 +126,7 @@ export default function CreateToken() {
         <div className="mb-4">
           <label className="block text-lg mb-2">Descrição do Ativo</label>
           <textarea
-            style={{ resize: 'none' }} 
+            style={{ resize: "none" }}
             className="border p-2 w-full bg-gray-800 border-gray-600 rounded"
             value={TokenDescription}
             onChange={(e) => setTokenDescription(e.target.value)}

@@ -34,7 +34,7 @@ export default function Sell() {
 							style: toastStyle,
 						}
 					);
-					console.log(err);
+					console.error(err);
 				})
 				.finally(() => {
 					setLoading(false);

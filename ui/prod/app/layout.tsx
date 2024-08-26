@@ -8,14 +8,13 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "",
-  description:
-		"",
+  description: "",
 };
 
 export default function RootLayout({
   children,
 }: {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -35,9 +34,7 @@ export default function RootLayout({
         <ThirdwebProvider>
           <Navbar />
           <div className="w-screen min-h-screen">
-            <div className="px-8 mx-auto mt-32 max-w-7xl">
-              {children}
-            </div>
+            <div className="px-8 mx-auto mt-32 max-w-7xl">{children}</div>
           </div>
           <Footer />
         </ThirdwebProvider>

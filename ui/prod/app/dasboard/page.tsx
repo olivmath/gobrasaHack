@@ -41,8 +41,6 @@ export default function ViewTokens() {
             provider
           );
 
-          console.log(await tokenContract.issuerOwnershipPercentage());
-
           tokensArray.push({
             name: await tokenContract.name(),
             symbol: await tokenContract.symbol(),
