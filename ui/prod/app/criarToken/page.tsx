@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { ethers } from "ethers";
-import { CONTRACT_ABI, CONTRACT_ADDRESS } from "@/services/contracts";
+import { BTGIssuer } from "@/services/contracts";
 
 export default function CreateToken() {
   const [TokenName, setTokenName] = useState("Nome Padrão do Ativo");
@@ -20,8 +20,8 @@ export default function CreateToken() {
   const createToken = async (signer: ethers.JsonRpcSigner) => {
     try {
       const contract = new ethers.Contract(
-        CONTRACT_ADDRESS,
-        CONTRACT_ABI,
+        BTGIssuer.address,
+        BTGIssuer.abi,
         signer
       );
 
@@ -35,12 +35,11 @@ export default function CreateToken() {
         formattedSupply
       );
 
-      const txReceipt = await transaction.wait();
-      console.log("txReceipt");
-      console.log(JSON.stringify(txReceipt, null, 2));
+      await transaction.wait();
 
-      const newDCCAddress = "0x9bd03768a7DCc129555dE410FF8E85528A4F88b5";
-      alert(`Token criado com sucesso! Endereço do contrato: ${newDCCAddress}`);
+      const lastToken = await contract.getLastCreatedToken();
+
+      alert(`Token criado com sucesso! Endereço do contrato: ${lastToken}`);
     } catch (error) {
       console.error("Erro ao criar o token:", error);
       alert("Erro ao criar o token!");
