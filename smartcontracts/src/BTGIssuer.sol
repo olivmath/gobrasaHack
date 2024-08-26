@@ -5,6 +5,7 @@ import {DCCToken} from "./DCCToken.sol";
 
 contract BTGIssuer {
     address public owner;
+    address[] public createdTokens;
 
     event DCCCreated(address indexed tokenAddress);
 
@@ -34,8 +35,23 @@ contract BTGIssuer {
             interestRate
         );
 
+        createdTokens.push(address(newDCC));
+
         emit DCCCreated(address(newDCC));
 
         return address(newDCC);
+    }
+
+    function getCreatedTokensCount() external view returns (uint256) {
+        return createdTokens.length;
+    }
+
+    function getAllCreatedTokens() external view returns (address[] memory) {
+        return createdTokens;
+    }
+
+    function getLastCreatedToken() external view returns (address) {
+        require(createdTokens.length > 0, "No tokens have been created yet");
+        return createdTokens[createdTokens.length - 1];
     }
 }

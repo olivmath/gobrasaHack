@@ -24,7 +24,7 @@ CHAIN_ID = 31337
 CONTRACT_SCRIPT_NAME = "deploy.local.s.sol"
 TRANSACTIONS_PATH = f"broadcast/{CONTRACT_SCRIPT_NAME}/{CHAIN_ID}/run-latest.json"
 DEBUG_DIR = "../ui/debug/generated/deployedContracts.ts"
-PROD_DIR = "../ui/prod/const/deployedContracts.ts"
+PROD_DIR = "../ui/prod/services/deployedContracts.ts"
 
 
 

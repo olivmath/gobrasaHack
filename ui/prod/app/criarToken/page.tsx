@@ -5,11 +5,11 @@ import { ethers } from "ethers";
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from "@/services/contracts";
 
 export default function CreateToken() {
-  const [TokenName, setTokenName] = useState("");
-  const [TokenSymbol, setTokenSymbol] = useState("");
-  const [TokenDescription, setTokenDescription] = useState("");
-  const [TokenAmount, setTokenAmount] = useState("");
-  const [interestRate, setInterestRate] = useState("");
+  const [TokenName, setTokenName] = useState("Nome Padrão do Ativo");
+  const [TokenSymbol, setTokenSymbol] = useState("SÍMBOLO");
+  const [TokenDescription, setTokenDescription] = useState("Descrição padrão do ativo");
+  const [TokenAmount, setTokenAmount] = useState("1000");
+  const [interestRate, setInterestRate] = useState("5");
   const [pdfFile, setPdfFile] = useState<File | null>(null);
 
   const deployIPFS = async (file: File) => {
@@ -39,7 +39,7 @@ export default function CreateToken() {
       console.log("txReceipt");
       console.log(JSON.stringify(txReceipt, null, 2));
 
-      const newDCCAddress = "111";
+      const newDCCAddress = "0x9bd03768a7DCc129555dE410FF8E85528A4F88b5";
       alert(`Token criado com sucesso! Endereço do contrato: ${newDCCAddress}`);
     } catch (error) {
       console.error("Erro ao criar o token:", error);
