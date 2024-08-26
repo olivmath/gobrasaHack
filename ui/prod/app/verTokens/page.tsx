@@ -2,16 +2,17 @@
 
 import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
-import { CONTRACT_ABI, CONTRACT_ADDRESS } from "@/services/contracts";
+import { BTGIssuer, DCCToken } from "@/services/contracts";
 
 // Definição de tipos para o token
 interface Token {
   name: string;
   symbol: string;
   description: string;
-  ipfsLink: string;
+  ipfsCID: string;
   totalSupply: string;
   interestRate: string;
+  sellPercent: string;
 }
 
 export default function ViewTokens() {
@@ -24,22 +25,37 @@ export default function ViewTokens() {
         if (!window.ethereum) throw new Error("MetaMask não está instalado!");
 
         const provider = new ethers.BrowserProvider(window.ethereum);
-        const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider);
+        const btgContract = new ethers.Contract(
+          BTGIssuer.address,
+          BTGIssuer.abi,
+          provider
+        );
 
-        // Obter todos os endereços dos holders
-        const holders = await contract.allHolders();
+        const tokens = await btgContract.getAllCreatedTokens();
         const tokensArray: Token[] = [];
 
-        for (const holder of holders) {
-          const balance = await contract.balanceOf(holder);
-          
+        for (const tokenAddress of tokens) {
+          const tokenContract = new ethers.Contract(
+            tokenAddress,
+            DCCToken.abi,
+            provider
+          );
+
+          console.log(await tokenContract.issuerOwnershipPercentage());
+
           tokensArray.push({
-            name: await contract.name(),
-            symbol: await contract.symbol(),
-            description: await contract.description(),
-            ipfsLink: await contract.ipfsLink(),
-            totalSupply: ethers.formatUnits(await contract.totalSupply(), 18),
-            interestRate: (await contract.interestRate()).toString(),
+            name: await tokenContract.name(),
+            symbol: await tokenContract.symbol(),
+            description: await tokenContract.description(),
+            ipfsCID: await tokenContract.ipfsCID(),
+            totalSupply: ethers.formatUnits(
+              await tokenContract.totalSupply(),
+              18
+            ),
+            interestRate: (await tokenContract.interestRate()).toString(),
+            sellPercent: (
+              await tokenContract.issuerOwnershipPercentage()
+            ).toString(),
           });
         }
 
@@ -71,6 +87,7 @@ export default function ViewTokens() {
                 <th className="border px-4 py-2">IPFS Link</th>
                 <th className="border px-4 py-2">Quantidade</th>
                 <th className="border px-4 py-2">Taxa de Juros (%)</th>
+                <th className="border px-4 py-2">Vendidos (%)</th>
               </tr>
             </thead>
             <tbody>
@@ -80,12 +97,18 @@ export default function ViewTokens() {
                   <td className="border px-4 py-2">{token.symbol}</td>
                   <td className="border px-4 py-2">{token.description}</td>
                   <td className="border px-4 py-2">
-                    <a href={token.ipfsLink} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
-                      {token.ipfsLink}
+                    <a
+                      href={token.ipfsCID}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-400 hover:underline"
+                    >
+                      {token.ipfsCID}
                     </a>
                   </td>
                   <td className="border px-4 py-2">{token.totalSupply}</td>
                   <td className="border px-4 py-2">{token.interestRate}</td>
+                  <td className="border px-4 py-2">{token.sellPercent}</td>
                 </tr>
               ))}
             </tbody>

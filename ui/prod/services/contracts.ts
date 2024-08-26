@@ -37,4 +37,5 @@ export const BTGIssuer = {
 
 export const DCCToken = {
   abi: deployedContracts["31337"][0].contracts.DCCToken.abi,
+  address: "0x763e69d24a03c0c8B256e470D9fE9e0753504D07"
 };
